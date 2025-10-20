@@ -4,7 +4,7 @@
 
 SDL_Window* win = 0;
 
-//pointer to rendere
+//pointer to renderer
 
 SDL_Renderer* ren = 0;
 

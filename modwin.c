@@ -4,54 +4,13 @@ void render();
 bool init(const char* title,int xpos,int ypos,int height,int width,int flags);
 
 
-SDL_Window * win =0;
-SDL_Renderer * ren =0;
+SDL_Window* win =0;
+SDL_Renderer* ren =0;
 
 bool grunning = false;  //needed for looping
 
-int main(int argc ,char* argv[])
-
-  {
-  
-    //function call within if
-    
-    if(init("Modwin",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,400,SDL_WINDOW_SHOWN))
- 
-        {
-        
-           grunning = true;  //game running is true
-           
-         }
-         
-     else
-        {
-         return 1;  //failed init
-         
-        }
-        
-      while(grunning)  //while game is running
-        {
-        
-         render();  //call render function whn game is running
-         
-        }
-        
-        
-        //delay
-   
-      //SDL_Delay(5000);
-         
-          
-      //clean up sdl
-      
-      SDL_Quit();
-      
-      return 0;
-      
-     }
      
-     
-    bool init(const char* title,int xpos,int ypos,int width,int height,int flags)
+ bool init(const char* title,int xpos,int ypos,int width,int height,int flags)
     
       {
       
@@ -76,10 +35,10 @@ int main(int argc ,char* argv[])
            
           else
             {
-              return true;
+              return false;
             }
          
-        return false;
+        return true;
         
      }
      
@@ -91,7 +50,7 @@ int main(int argc ,char* argv[])
     
     //set to black
     
-    SDL_SetRenderDrawColor(ren,0,0,0,255); //set to black
+    SDL_SetRenderDrawColor(ren,1,0,1,255); //set to black
     
   //clear to that color
   
@@ -101,10 +60,49 @@ int main(int argc ,char* argv[])
    
    SDL_RenderPresent(ren);
    
+    //delay
+   
+   // SDL_Delay(5000);
+   
   }
     
     
-     
+ int main(int argc ,char* argv[])
+
+  {
+  
+    //function call within if
+    
+    
+    
+    if(init("Modwin",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,400,SDL_WINDOW_SHOWN))
+ 
+        {
+        
+           grunning = true;  //game running is true
+           
+         }
+         
+     else
+        {
+         return 1;  //failed init
+         
+        }
+        
+      while(grunning)  //while game is running
+        {
+        
+         render();  //call render function whn game is running
+         
+        }
+          
+      //clean up sdl
+      
+      SDL_Quit();
+      
+      return 0;
+      
+     }
       
        
          
