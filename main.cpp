@@ -1,69 +1,29 @@
-#include<stdio.h>
+#include<Game.h>
 
-void init();
-void render();
-void update();
-void handle_events();
-void clean();
+//game obj
 
-bool running = true;  
+Game* gameobj=0;  //global pointer to a game object '0'-null pointer 
 
-int main()
-  {
-  
-   //initialize sdl
-   
-   void init();
-   
-   while(running)
-   
-   {
-   
-   //while game is running do these
-     handle_events();  //handle events from user
-     render();  //render graphics onto screen
-     update(); //update based on events 
+//main func
+
+  int main(int argc,char* argv[])
+     {
+       gameobj=new Game(); //new keyword allocates memory and calls constructor ,pointer gameobj now points to new gameobject
+       
+       gameobj->init("gamewin",100,100,800,500,SDL_WINDOW_SHOWN);  //call function along with passing arguments
+       
+      while(gameobj->running())
+        {
+          gameobj->handleevents();
+          gameobj->update();
+          gameobj->render();
+        }
+        
+       gameobj->clean();  //when game stops(loop exit) then clean unwanted data
+       
+      return 0;
+      
     }
-    
-   //clear everything
-   
-   clean();
-   
-  }
-  
-  void init()
-   {
-   
-    //initialize everything(SDL)
-    printf("\n initializing 100 percent ");
-   
-   }
-   
-  void render()
-   {
-     //render graphics
-     printf("\n render start");
-   }
-   
-  void update()
-   {
-    
-    //update based on events
-    printf("\n updating initiated");
-   
-   }
-   
-  void handle_events()
-   {
-     //handle user events 
-    printf("\n handling events");
-     
-   }
-   
-  void clean()
-  {
-  
-   //to clean after quit
-   printf("\n clearing garbage");
-   
-  }
+       
+       
+   //-> arrow operator - is used when we are accessing a class or a struct member through  a pointer 

@@ -2,7 +2,7 @@
 #include<stdio.h>
 //init funtion to initialize sdl/game
 
-bool Game::init(const char*,int xpos,int ypos,int width,int height,int flags)
+bool Game::init(const char* title,int xpos,int ypos,int width,int height,int flags)  //function type= boolean , function belongs to game class , :: scope resolution operatoe says that function belongs to game class
 
   {
   
@@ -14,19 +14,19 @@ bool Game::init(const char*,int xpos,int ypos,int width,int height,int flags)
         
         //if init success then initialize window
         
-        win = SDL_CreateWindow("Game_window",xpos,ypos,with,height,SDL_WINDOW_SHOWN);
+        win = SDL_CreateWindow(title,xpos,ypos,width,height,SDL_WINDOW_SHOWN);
         
         //if win creation successful then create renderer
 //----------------------------------------------------------------------------------------------------------------------------//        
-          if(win!=0)
+          if(win!=0) //if window creation sucessful
            {
            ren = SDL_CreateRenderer(win,-1,0);
            
            //if render creation success draw and set color
 //------------------------------------------------------------------------------------------------------------//           
-             if(ren!=0)
+             if(ren!=0) //if renderer sucess
                {
-                 SDL_SetRendererDrawColor(ren,255,255,255,255);
+                 SDL_SetRendererDrawColor(ren,255,255,255,255); //r,g,b,alpha
                 }
                 
              else
@@ -55,6 +55,29 @@ bool Game::init(const char*,int xpos,int ypos,int width,int height,int flags)
      return true;
      
    }
+   
+   
+   void Game::render()
+     {
+     
+       SDL_RenderClear(ren);  //clear screen to draw color
+       
+       SDL_RenderPresent(ren);  //draw to the screen
+     }
+     
+     
+   void Game::clean()
+     {
+     
+       printf("\n cleaning_game");
+       SDL_DestroyWindow(win);
+       SDL_DestroyRenderer(ren);
+       SDL_Quit();
+    }
+     
+       
+     
+      
      
         
         
