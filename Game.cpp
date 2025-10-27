@@ -1,5 +1,5 @@
-#include<Game.h>
-#include<stdio.h>
+#include "Game.h"  //searches in current directory used for our own use
+#include <stdio.h>  //searches in system directories
 //init funtion to initialize sdl/game
 
 bool Game::init(const char* title,int xpos,int ypos,int width,int height,int flags)  //function type= boolean , function belongs to game class , :: scope resolution operatoe says that function belongs to game class
@@ -76,6 +76,30 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,int fla
     }
      
        
+   void Game::handleevents()
+     {
+     
+      SDL_Event event;
+      
+      if(SDL_poll Event (&event))
+        {
+         switch (event.type)
+           {
+             case SDL_QUIT:
+             
+             grunning=false;
+             break;
+             
+             
+             default:
+             break;
+          }
+        }
+        
+      }
+             
+                 
+     }
      
       
      
