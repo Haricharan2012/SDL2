@@ -81,7 +81,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,int fla
      
       SDL_Event event;
       
-      if(SDL_poll Event (&event))
+      if(SDL_pollEvent (&event))
         {
          switch (event.type)
            {
