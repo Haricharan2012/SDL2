@@ -2,11 +2,26 @@
 #include <stdio.h>  //searches in system directories
 //init funtion to initialize sdl/game
 
+
+Game::Game()
+  {
+     grunning = false;
+    win = nullptr;
+    ren = nullptr;
+  
+  }
+  
+  Game::~Game()
+   {
+    clean();
+   }
+  
+  
 bool Game::init(const char* title,int xpos,int ypos,int width,int height,int flags)  //function type= boolean , function belongs to game class , :: scope resolution operatoe says that function belongs to game class
 
   {
   
-    if(SDL_INIT_EVERYTHING)==0)
+    if(SDL_Init(SDL_INIT_VIDEO)==0)
       {
       
         //success
@@ -26,7 +41,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,int fla
 //------------------------------------------------------------------------------------------------------------//           
              if(ren!=0) //if renderer sucess
                {
-                 SDL_SetRendererDrawColor(ren,255,255,255,255); //r,g,b,alpha
+                 SDL_SetRenderDrawColor(ren,255,255,255,255); //r,g,b,alpha
                 }
                 
              else
@@ -45,7 +60,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,int fla
              } 
       else
         {
-          printf("\n initializing failed");
+          printf("\n initializing failed %s",SDL_GetError());
           return false;
         }
        
@@ -54,7 +69,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,int fla
      
      return true;
      
-   }
+   }	
    
    
    void Game::render()
@@ -81,7 +96,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,int fla
      
       SDL_Event event;
       
-      if(SDL_pollEvent (&event))
+      if(SDL_PollEvent (&event))
         {
          switch (event.type)
            {
@@ -99,11 +114,10 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,int fla
       }
              
                  
-     }
-     
-      
-     
-        
+ void Game::update()
+   {
+   
+   }
         
          
               
