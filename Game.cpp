@@ -17,10 +17,19 @@ Game::Game()
    }
   
   
-bool Game::init(const char* title,int xpos,int ypos,int width,int height,int flags)  //function type= boolean , function belongs to game class , :: scope resolution operatoe says that function belongs to game class
+bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fullscreen)  //function type= boolean , function belongs to game class , :: scope resolution operatoe says that function belongs to game class
 
   {
   
+  
+   int flags=0;
+  
+     if (fullscreen)
+       {
+       
+        flags=SDL_WINDOW_FULLSCREEN;
+       }
+        
     if(SDL_Init(SDL_INIT_VIDEO)==0)
       {
       
