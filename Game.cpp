@@ -54,8 +54,8 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
                  
                  SDL_Surface* surf = SDL_LoadBMP("assets/smile.bmp");   //load func returns surface*
                  smtex=SDL_CreateTextureFromSurface(ren,surf); //create texture form surface
-                 SDL_FreeSurface(smtex); //free temp surface 
-                 SDL_QueryTexture(ntex,NULL,NULL,&srect.w,&srect.h);  // get dimensions of textures we've loaded  to set width ad height of source rect
+                 SDL_FreeSurface(surf); //free temp surface 
+                 SDL_QueryTexture(smtex,NULL,NULL,&srect.w,&srect.h);  // get dimensions of textures we've loaded  to set width ad height of source rect
                  
                  drect.x=srect.x=0;
                  drect.y=srect.y=0;
@@ -96,7 +96,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
      {
      
        SDL_RenderClear(ren);  //clear screen to draw color
-       SDL_RenderCopy(ren,ntex,&srect,&drect); // to render texture
+       SDL_RenderCopy(ren,smtex,&srect,&drect); // to render texture
        SDL_RenderPresent(ren);  //draw to the screen
      }
      
