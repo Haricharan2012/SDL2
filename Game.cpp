@@ -56,14 +56,12 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
                  smtex=SDL_CreateTextureFromSurface(ren,surf); //create texture form surface
                  SDL_FreeSurface(surf); //free temp surface 
                  SDL_QueryTexture(smtex,NULL,NULL,&srect.w,&srect.h);  // get dimensions of textures we've loaded  to set width ad height of source rect
-                 
                  drect.x=srect.x=0;
                  drect.y=srect.y=0;
                  drect.w=srect.w;
                  drect.h=srect.h;
                  
                 }
-                
              else
                {
                 printf("\n render failed");
@@ -88,10 +86,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
      grunning=true;  //init success start main loop 
      
      return true;
-     
    }	
-   
-   
    void Game::render()
      {
      
@@ -124,8 +119,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
              
              grunning=false;
              break;
-             
-             
+            
              default:
              break;
           }
