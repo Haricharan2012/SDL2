@@ -1,4 +1,4 @@
-#include "Game.h"  //searches in current directory used for our own use
+ 	#include "Game.h"  //searches in current directory used for our own use
 #include <stdio.h>  //searches in system directories
 //init funtion to initialize sdl/game
 
@@ -50,16 +50,23 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
 //------------------------------------------------------------------------------------------------------------//           
              if(ren!=0) //if renderer sucess
                {
-                 SDL_SetRenderDrawColor(ren,255,255,255,255); //r,g,b,alpha
+                 SDL_SetRenderDrawColor(ren,0,0,0,255); //r,g,b,alpha
                  
-                 SDL_Surface* surf = SDL_LoadBMP("assets/smile.bmp");   //load func returns surface*
+                 SDL_Surface* surf = SDL_LoadBMP("assets/scarfy.bmp");   //load func returns surface*
                  smtex=SDL_CreateTextureFromSurface(ren,surf); //create texture form surface
-                 SDL_FreeSurface(surf); //free temp surface 
-                 SDL_QueryTexture(smtex,NULL,NULL,&srect.w,&srect.h);  // get dimensions of textures we've loaded  to set width ad height of source rect
-                 drect.x=srect.x=0;
-                 drect.y=srect.y=0;
-                 drect.w=srect.w;
-                 drect.h=srect.h;
+                 SDL_FreeSurface(surf); //free temp surface  freeing used memory
+                // SDL_QueryTexture(smtex,NULL,NULL,&srect.w,&srect.h);  // get dimensions of textures we've loaded  to set width and height of source rect
+                
+                 srect.w=128;  //width of source rect
+                 srect.h=128;  //height of dest rect
+                 
+               //  drect.x=srect.x=5;  //set x cordinate to 0
+                // drect.y=srect.y=5;  //set y cordinate to 0  together the cordinates (0,0) top left!
+                
+                  drect.x=350; //dest rect x cord
+                  drect.y=200; //dest rect y cord
+                 drect.w=srect.w; //setting width  of dest rect
+                 drect.h=srect.h; //setting height  of dest rect 
                  
                 }
              else
@@ -130,6 +137,8 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
                  
  void Game::update()
    {
+   
+     srect.x=128*int(((SDL_GetTicks()/100)%6)); //getticks() is used to find out no of millisecs since sdl was initialized.then divide this by amount of  time we want btw frames. then use % operator to keep it in the range of frames we want.
    
    }
         
