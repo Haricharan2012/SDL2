@@ -14,7 +14,7 @@ Game* gameobj=0;  //global pointer to a game object '0'-null pointer
        
       while(gameobj->running())
         {
-          gameobj->handleevents();
+          gameobj->handleevents();	
           gameobj->update();
           gameobj->render();
         }

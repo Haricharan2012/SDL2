@@ -98,7 +98,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
      {
      
        SDL_RenderClear(ren);  //clear screen to draw color
-       SDL_RenderCopy(ren,smtex,&srect,&drect); // to render texture
+       SDL_RenderCopyEx(ren,smtex,&srect,&drect,0,0,SDL_FLIP_HORIZONTAL); // PASS IN HORIZONTAL FLIP to render texture
        SDL_RenderPresent(ren);  //draw to the screen
      }
      
