@@ -1,6 +1,7 @@
 #ifndef _Game_
 #define _Game_
 #include "SDL.h"
+#include "SDL_image.h"
 
 class Game
   {

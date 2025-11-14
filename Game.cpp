@@ -50,9 +50,9 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
 //------------------------------------------------------------------------------------------------------------//           
              if(ren!=0) //if renderer sucess
                {
-                 SDL_SetRenderDrawColor(ren,0,0,0,255); //r,g,b,alpha
+                 SDL_SetRenderDrawColor(ren,255,255,255,255); //r,g,b,alpha
                  
-                 SDL_Surface* surf = SDL_LoadBMP("assets/scarfy.bmp");   //load func returns surface*
+                 SDL_Surface* surf = IMG_Load("assets/scarfy.png");   //load func returns surface*
                  smtex=SDL_CreateTextureFromSurface(ren,surf); //create texture form surface
                  SDL_FreeSurface(surf); //free temp surface  freeing used memory
                 // SDL_QueryTexture(smtex,NULL,NULL,&srect.w,&srect.h);  // get dimensions of textures we've loaded  to set width and height of source rect
