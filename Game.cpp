@@ -52,19 +52,19 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
                {
                  SDL_SetRenderDrawColor(ren,255,255,255,255); //r,g,b,alpha
                  
-                 SDL_Surface* surf = IMG_Load("assets/scarfy.png");   //load func returns surface*
+                 SDL_Surface* surf = IMG_Load("assets/bey2.png");   //load func returns surface*
                  smtex=SDL_CreateTextureFromSurface(ren,surf); //create texture form surface
                  SDL_FreeSurface(surf); //free temp surface  freeing used memory
                 // SDL_QueryTexture(smtex,NULL,NULL,&srect.w,&srect.h);  // get dimensions of textures we've loaded  to set width and height of source rect
                 
-                 srect.w=128;  //width of source rect
-                 srect.h=128;  //height of dest rect
+                 srect.w=280;  //width of source rect
+                 srect.h=280;  //height of dest rect
                  
                //  drect.x=srect.x=5;  //set x cordinate to 0
                 // drect.y=srect.y=5;  //set y cordinate to 0  together the cordinates (0,0) top left!
                 
-                  drect.x=350; //dest rect x cord
-                  drect.y=200; //dest rect y cord
+                  drect.x=280; //dest rect x cord
+                  drect.y=100; //dest rect y cord
                  drect.w=srect.w; //setting width  of dest rect
                  drect.h=srect.h; //setting height  of dest rect 
                  
@@ -74,7 +74,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
                 printf("\n render failed");
                 return false;
                }
-             }
+             }	
 //------------------------------------------------------------------------------------------------------------//               
            else
               {
@@ -138,7 +138,7 @@ bool Game::init(const char* title,int xpos,int ypos,int width,int height,bool fu
  void Game::update()
    {
    
-     srect.x=128*int(((SDL_GetTicks()/100)%6)); //getticks() is used to find out no of millisecs since sdl was initialized.then divide this by amount of  time we want btw frames. then use % operator to keep it in the range of frames we want.
+     srect.x=280*int(((SDL_GetTicks()/100)%4)); //getticks() is used to find out no of millisecs since sdl was initialized.then divide this by amount of  time we want btw frames. then use % operator to keep it in the range of frames we want.
    
    }
         
